@@ -1,12 +1,9 @@
 from clients import ClientsDB
 from cars import CarsDB
 from orders import OrdersDB
-from colorama import init, Fore, Style
-
-init(autoreset=True)
 
 def print_menu():
-    print(Fore.YELLOW + Style.BRIGHT + "\n===== CARS DATABASE MENU =====")
+    print("\n===== CARS DATABASE MENU =====")
     print("1.) Add Client")
     print("2.) Add Car")
     print("3.) Add Order")
@@ -17,7 +14,7 @@ def print_menu():
     print("8.) List Orders")
     print("9.) Delete Client")
     print("10.) Exit")
-    print(Fore.YELLOW + "===============================")
+    print("===============================")
 
 def main():
     clients_db = ClientsDB()
@@ -30,7 +27,7 @@ def main():
 
     while True:
         print_menu()
-        choice = input(Fore.CYAN + "Select an option: ")
+        choice = input("Select an option: ")
 
         if choice == "1":
             name = input("Enter the name of the client: ")
@@ -55,30 +52,30 @@ def main():
             name = input("Enter the name of the client: ")
             clients = clients_db.search_client_by_name(name)
             for client in clients:
-                print(Fore.GREEN + f"ID: {client[0]}, Name: {client[1]}, Phone: {client[2]}, Email: {client[3]}")
+                print(f"ID: {client[0]}, Name: {client[1]}, Phone: {client[2]}, Email: {client[3]}")
 
         elif choice == "5":
             client_id = int(input("Enter the ID of the client: "))
             client = clients_db.search_client_by_id(client_id)
             if client:
-                print(Fore.GREEN + f"ID: {client[0]}, Name: {client[1]}, Phone: {client[2]}, Email: {client[3]}")
+                print(f"ID: {client[0]}, Name: {client[1]}, Phone: {client[2]}, Email: {client[3]}")
             else:
-                print(Fore.RED + "Client does not exist")
+                print("Client does not exist")
 
         elif choice == "6":
             clients = clients_db.list_clients()
             for client in clients:
-                print(Fore.GREEN + f"ID: {client[0]}, Name: {client[1]}, Phone: {client[2]}, Email: {client[3]}")
+                print(f"ID: {client[0]}, Name: {client[1]}, Phone: {client[2]}, Email: {client[3]}")
 
         elif choice == "7":
             cars = cars_db.list_cars()
             for car in cars:
-                print(Fore.GREEN + f"Brand: {car[0]}, Year of Make: {car[1]}, Price: {car[2]}")
+                print(f"Brand: {car[0]}, Year of Make: {car[1]}, Price: {car[2]}")
 
         elif choice == "8":
             orders = orders_db.list_orders()
             for order in orders:
-                print(Fore.GREEN + f"Order ID: {order[0]}, Order Date: {order[1]}, Client Name: {order[2]}, Quantity: {order[3]}, Total Price: {order[4]}")
+                print(f"Order ID: {order[0]}, Order Date: {order[1]}, Client Name: {order[2]}, Quantity: {order[3]}, Total Price: {order[4]}")
 
         elif choice == "9":
             client_id = int(input("Enter the ID of the client to delete: "))
@@ -88,7 +85,7 @@ def main():
             break
 
         else:
-            print(Fore.RED + "Invalid input")
+            print("Invalid input")
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     main()

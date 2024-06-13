@@ -1,6 +1,7 @@
 from db import DBHelper
+
 class CarsDB:
-    def _init_(self):
+    def __init__(self):
         self.db_helper = DBHelper()
 
     def create_table(self):

@@ -1,7 +1,7 @@
 import sqlite3
 
 class DBHelper:
-    def _init_(self, db_name="cars.db"):
+    def __init__(self, db_name="cars.db"):
         self.CONN = sqlite3.connect(db_name)
         self.CURSOR = self.CONN.cursor()
 
@@ -26,5 +26,5 @@ class DBHelper:
             self.CURSOR.execute(query)
         return self.CURSOR.fetchone()
 
-    def _del_(self):
+    def __del__(self):
         self.CONN.close()
